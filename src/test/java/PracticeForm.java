@@ -1,9 +1,6 @@
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import java.io.File;
-
-import static com.codeborne.selenide.Condition.empty;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -20,13 +17,13 @@ public class PracticeForm {
 
     @Test
     void fillFormTest() {
-        File fileToUpload = new File("src/test/resources/test.jpg");
+
 
         open("/automation-practice-form");
         $("#firstName").setValue("Daria");
         $("#lastName").setValue("Test");
         $("#userEmail").setValue("daria@test.com");
-        $(byText("Female")).click();
+        $("#genterWrapper").$(byText("Female")).click();
         $("#userNumber").setValue("7999111223");
 
         //выбор даты в календаре
@@ -38,11 +35,10 @@ public class PracticeForm {
         $("#subjectsInput").setValue("Math").pressEnter();
         $("#subjects-label").click();
 
-        $(byText("Music")).click();
+        $("#hobbiesWrapper").$(byText("Music")).click();
 
         //загрузка файла
-        $("#uploadPicture").uploadFile(fileToUpload);
-
+        $("#uploadPicture").uploadFromClasspath("test.jpg");
         $("#state").click();
         $("#react-select-3-option-2").click();
         $("#city").click();
@@ -52,16 +48,17 @@ public class PracticeForm {
         $("#submit").click();
 
         //Проверка заполненной формы
-        $x("//table/tbody/tr[1]/td[2]").shouldHave(text("Daria Test"));
-        $x("//table/tbody/tr[2]/td[2]").shouldHave(text("daria@test.com"));
-        $x("//table/tbody/tr[3]/td[2]").shouldHave(text("Female"));
-        $x("//table/tbody/tr[4]/td[2]").shouldHave(text("7999111223"));
-        $x("//table/tbody/tr[5]/td[2]").shouldHave(text("31 January,1998"));
-        $x("//table/tbody/tr[6]/td[2]").shouldHave(text("Maths"));
-        $x("//table/tbody/tr[7]/td[2]").shouldHave(text("Music"));
-        $x("//table/tbody/tr[8]/td[2]").shouldHave(text("test.jpg"));
-        $x("//table/tbody/tr[9]/td[2]").shouldHave(text("Lenina Street 102"));
-        $x("//table/tbody/tr[10]/td[2]").shouldHave(text("Haryana Karnal"));
+        $(".table-responsive").shouldHave(text("Daria Test"));
+        $(".table-responsive").shouldHave(text("daria@test.com"));
+        $(".table-responsive").shouldHave(text("Female"));
+        $(".table-responsive").shouldHave(text("7999111223"));
+        $(".table-responsive").shouldHave(text("31 January,1998"));
+        $(".table-responsive").shouldHave(text("Maths"));
+        $(".table-responsive").shouldHave(text("Music"));
+        $(".table-responsive").shouldHave(text("test.jpg"));
+        $(".table-responsive").shouldHave(text("Lenina Street 102"));
+        $(".table-responsive").shouldHave(text("Haryana Karnal"));
+
 
 
     }
