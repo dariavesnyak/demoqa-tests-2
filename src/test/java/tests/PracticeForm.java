@@ -1,6 +1,10 @@
+package tests;
+
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import page.RegistrationPage;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -19,7 +23,7 @@ public class PracticeForm {
     void fillFormTest() {
 
 
-        open("/automation-practice-form");
+       open("/automation-practice-form");
         $("#firstName").setValue("Daria");
         $("#lastName").setValue("Test");
         $("#userEmail").setValue("daria@test.com");
