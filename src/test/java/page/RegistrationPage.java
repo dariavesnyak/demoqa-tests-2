@@ -3,13 +3,12 @@ package page;
 import page.components.CalendarComponent;
 import com.codeborne.selenide.SelenideElement;
 import page.components.CheckResult;
-
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
 
-    public static SelenideElement firstNameInput = $("#firstName"),
+    private final SelenideElement firstNameInput = $("#firstName"),
                                   lastNameInput = $("#lastName"),
                                   userEmailInput = $("#userEmail"),
                                   genderWrapper = $("#genterWrapper"),
@@ -32,8 +31,6 @@ public class RegistrationPage {
 
     public void openPage() {
         open("/automation-practice-form");
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
     }
 
     public void setFirstName(String value) {

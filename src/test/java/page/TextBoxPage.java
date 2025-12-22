@@ -2,13 +2,11 @@ package page;
 
 import com.codeborne.selenide.SelenideElement;
 import page.components.CheckResult;
-
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class TextBoxPage {
 
-    public static SelenideElement   userNameInput = $("#userName"),
+    private final SelenideElement   userNameInput = $("#userName"),
             userEmailInput = $("#userEmail"),
             currentAddressInput = $("#currentAddress"),
             permanentAddressInput = $("#permanentAddress"),
@@ -18,9 +16,8 @@ public class TextBoxPage {
 
     public void openPage() {
         open("/text-box");
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
     }
+
 
     public void setUserNameInput( String value) {
         userNameInput.setValue(value);

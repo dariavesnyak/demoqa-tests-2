@@ -1,22 +1,21 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
+
 import org.junit.jupiter.api.Test;
 import page.TextBoxPage;
+import page.components.SkipBanners;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
 public class TextBoxTestsPageObject extends TestBase{
 
     TextBoxPage textBoxPage = new TextBoxPage();
+    SkipBanners skipBanners = new SkipBanners();
 
     @Test
     void fillFormTest() {
 
         textBoxPage.openPage();
+        skipBanners.notVisibleBanners();
         textBoxPage.setUserNameInput("Daria");
         textBoxPage.setUserEmailInput("daria@test.com");
         textBoxPage.setCurrentAddressInput("Lenina Street 102");
