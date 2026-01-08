@@ -9,8 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
 public class PracticeFormRemoteTests {
@@ -30,6 +29,8 @@ public class PracticeFormRemoteTests {
     void fillFormTest() {
         step("Открыть форму", () -> {
             open("/automation-practice-form");
+            executeJavaScript("$('#fixedban').remove()");
+            executeJavaScript("$('footer').remove()");
         });
         step("Заполнить все поля формы", () -> {
             $("#firstName").setValue("Daria");
@@ -71,7 +72,7 @@ public class PracticeFormRemoteTests {
             $(".table-responsive").shouldHave(text("Music"));
             $(".table-responsive").shouldHave(text("test.jpg"));
             $(".table-responsive").shouldHave(text("Lenina Street 102"));
-            $(".table-responsive").shouldHave(text("Haryana Karnal"));
+            $(".table-responsive").shouldHave(text("NCR Delhi"));
 
         });
 
