@@ -52,9 +52,9 @@ public class PracticeFormRemoteTests {
             //загрузка файла
             $("#uploadPicture").uploadFromClasspath("test.jpg");
             $("#state").click();
-            $("#react-select-3-option-2").click();
+            $("#stateCity-wrapper").$(byText("NCR")).click();
             $("#city").click();
-            $("#react-select-4-option-0").click();
+            $("#stateCity-wrapper").$(byText("Delhi")).click();
 
             $("#currentAddress").setValue("Lenina Street 102");
         });
