@@ -24,7 +24,6 @@ public class PracticeFormRemoteTests {
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -33,6 +32,8 @@ public class PracticeFormRemoteTests {
                 "enableVideo", true
         ));
         Configuration.browserCapabilities = capabilities;
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("browserVersion");
 
     }
 
@@ -42,6 +43,8 @@ public class PracticeFormRemoteTests {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
+
+        closeWebDriver();
 
     }
 
