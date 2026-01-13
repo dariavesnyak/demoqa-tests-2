@@ -2,21 +2,21 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import page.RegistrationPage;
-import page.components.SkipBanners;
+import helpers.JsSnippets;
 
 
 public class PracticeFormPageObjectWithDataTest extends TestBase{
 
 
     RegistrationPage registrationPage = new RegistrationPage();
-    SkipBanners skipBanners = new SkipBanners();
+    JsSnippets jsSnippets = new JsSnippets();
     DataTest dataTest = new DataTest();
 
 
     @Test
     void fillFormTest() {
         registrationPage.openPage();
-        skipBanners.notVisibleBanners();
+        jsSnippets.notVisibleBanners();
         registrationPage.setFirstName(dataTest.firstName);
         registrationPage.setLastName(dataTest.lastName);
         registrationPage.setEmail(dataTest.userEmail);
@@ -50,7 +50,7 @@ public class PracticeFormPageObjectWithDataTest extends TestBase{
     @Test
     void minimumFillFormTest() {
         registrationPage.openPage();
-        skipBanners.notVisibleBanners();
+        jsSnippets.notVisibleBanners();
         registrationPage.setFirstName(dataTest.firstName);
         registrationPage.setLastName(dataTest.lastName);
         registrationPage.setEmail(dataTest.userEmail);
@@ -67,7 +67,7 @@ public class PracticeFormPageObjectWithDataTest extends TestBase{
     @Test
     void negativTest() {
         registrationPage.openPage();
-        skipBanners.notVisibleBanners();
+        jsSnippets.notVisibleBanners();
         registrationPage.setFirstName(dataTest.firstName);
         registrationPage.pressSubmit();
         registrationPage.checkNegativeTest();

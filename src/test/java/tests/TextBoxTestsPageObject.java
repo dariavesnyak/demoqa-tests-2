@@ -3,19 +3,19 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import page.TextBoxPage;
-import page.components.SkipBanners;
+import helpers.JsSnippets;
 
 
 public class TextBoxTestsPageObject extends TestBase{
 
     TextBoxPage textBoxPage = new TextBoxPage();
-    SkipBanners skipBanners = new SkipBanners();
+    JsSnippets jsSnippets = new JsSnippets();
 
     @Test
     void fillFormTest() {
 
         textBoxPage.openPage();
-        skipBanners.notVisibleBanners();
+        jsSnippets.notVisibleBanners();
         textBoxPage.setUserNameInput("Daria");
         textBoxPage.setUserEmailInput("daria@test.com");
         textBoxPage.setCurrentAddressInput("Lenina Street 102");
